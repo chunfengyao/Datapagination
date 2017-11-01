@@ -1,0 +1,38 @@
+package com.ycf.pagination;
+
+/**
+ * 新闻信息对象的封装
+ * @author 14325
+ *
+ */
+
+public class NewsBean {
+	//新闻标题
+	public String newsTitle;
+	//新闻描述
+	public String newsDescription;
+	//新闻生成时间
+	public java.util.Date newsDate;
+	//指向新闻的链接
+	public String newsURL;
+	
+	public String getNewsTitle() {
+		return newsTitle;
+	}
+	public void setNewsTitle(String newsTitle) {
+		this.newsTitle = newsTitle;
+	}
+	public java.util.Date getNewsDate() {
+		return newsDate;
+	}
+	public void setNewsDate(java.util.Date newsDate) {
+		this.newsDate = newsDate;
+	}
+	public String getNewsURL() {
+		return newsURL;
+	}
+	public void setNewsURL(String newsURL) {
+		this.newsURL = newsURL;
+	}
+	
+}
