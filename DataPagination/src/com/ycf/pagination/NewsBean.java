@@ -22,6 +22,12 @@ public class NewsBean {
 	public void setNewsTitle(String newsTitle) {
 		this.newsTitle = newsTitle;
 	}
+	public String getNewsDescription() {
+		return newsDescription;
+	}
+	public void setNewsDescription(String newsDescription) {
+		this.newsDescription = newsDescription;
+	}
 	public java.util.Date getNewsDate() {
 		return newsDate;
 	}
@@ -34,5 +40,7 @@ public class NewsBean {
 	public void setNewsURL(String newsURL) {
 		this.newsURL = newsURL;
 	}
+	
+	
 	
 }

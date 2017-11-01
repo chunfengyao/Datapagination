@@ -1,6 +1,7 @@
 package com.ycf.pagination.dao;
 
 import com.ycf.pagination.NewsBean;
+import com.ycf.pagination.PageBean;
 
 /**
 	 * 
@@ -10,7 +11,7 @@ import com.ycf.pagination.NewsBean;
 	 */
 public interface INewsDao {
 	//获取一页数据
-	public void getOnePage(com.ycf.pagination.PageBean<NewsBean> td);
+	public void getOnePage(PageBean<NewsBean> td);
 	//获取总数
-	public int getTotleNum(com.ycf.pagination.PageBean<NewsBean> td);
+	public int getTotleNum(PageBean<NewsBean> td);
 }
