@@ -13,3 +13,12 @@ DataPagination
 
 ËµÃ÷ÎÄµµ
 -------------
+**DDL_for_mysql**
+
+
+    create table `ycf_db`.`news`(
+        `newsTitle` VARCHAR(128) not null,
+       `newsDescription` VARCHAR(512) not null,
+       `newsDate` DATETIME not null,
+       `newsURL` VARCHAR(256) not null
+    );
