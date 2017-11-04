@@ -25,24 +25,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 	这是新闻页!!!
-	<table boder="1" width="80%" align="center" cellpadding="5" cellspacing="0">
+	<table border="1" width="80%" align="center" cellpadding="5" cellspacing="0" >
 		<tr>
 			<td>序号</td>
 			<td>标题</td>
 			<td>描述</td>
 			<td>日期</td>
 			<td>链接</td>
-			<td>
 		</tr>
 		<!-- 迭代数据 -->
 		<c:choose>
 			<c:when test="${not empty requestScope.Pagebean.resaultSet}">
 				<c:forEach var="news" items="${requestScope.Pagebean.resaultSet}" varStatus="vs">
 					<tr>
-						<td>${vs.count}</td>
-						<td>${news.newsTitle}</td>
-						<td>${news.newsDescription}</td>
-						<td><a href="${news.newsURL}">go~</a></td>
+						<td>${vs.count }</td>
+						<td>${news.newsTitle }</td>
+						<td>${news.newsDescription }</td>
+						<td>${news.newsDate.toLocaleString() }</td>
+						<td><a href="${news.newsURL }">go~</a></td>
 					</tr>
 				</c:forEach>
 			</c:when>
@@ -53,6 +53,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 			</c:otherwise>
 		</c:choose>
-		
+		<tr>
+			<td align="center" colspan="4">
+				<a href="${request.contextPath }/DataPagination/news?currentpage=1">
+						首页
+					</a>&nbsp;&nbsp;
+				<a href="${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.currentPage-1 }">
+						上一页
+					</a>&nbsp;&nbsp;
+				<a href="${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.currentPage+1 }">
+						下一页
+					</a>&nbsp;&nbsp;
+				<a href="${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.totlePage }">
+						末页${requestScope.Pagebean.totlePage }
+					</a>&nbsp;&nbsp;
+			</td>
+		</tr>
 	</table>
 </html>

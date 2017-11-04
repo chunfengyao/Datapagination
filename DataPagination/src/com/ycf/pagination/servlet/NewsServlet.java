@@ -28,10 +28,12 @@ public class NewsServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		//读取lineNumPerPage、currentpage数值并对空值进行处理
-  		String lineNumPerPage = request.getParameter("lineNumPerPage");
 		String currentpage = request.getParameter("currentpage");
+  		String lineNumPerPage = request.getParameter("lineNumPerPage");
 		String url;
 		if (currentpage == "" || currentpage == null) {
+			currentpage = "1";
+		}else if (Integer.parseInt(currentpage) < 1) {
 			currentpage = "1";
 		}
 		if (lineNumPerPage == "" || lineNumPerPage == null) {
@@ -45,6 +47,17 @@ public class NewsServlet extends HttpServlet {
 		pageBean.setLineNumPerPage(lineNumPerPage);
 		//创建services对象
 		NewsServices newsServices = new NewsServices();
+		//调用service去查询总页数
+		newsServices.getTotleNum(pageBean);
+		
+		//解决末页可以下一页的问题
+		if ((Integer.parseInt(currentpage)) > (Integer.parseInt(pageBean.getTotlePage()))) {
+			currentpage = pageBean.getTotlePage();
+			request.setAttribute("currentpage", currentpage);
+			pageBean.setCurrentPage(currentpage);
+		}
+		
+		
 		//调用service去查询数据
 		newsServices.getOnePageNews(pageBean);
 		//把pagebean对象放置到请求域中
@@ -53,6 +66,7 @@ public class NewsServlet extends HttpServlet {
 		url = "/WEB-INF/newslist.jsp";
 		//跳转到新闻页面
 		try {
+//			response.sendRedirect(request.getContextPath()+"/news?currentpage="+currentpage);
 			request.getRequestDispatcher(url).forward(request, response);
 		} catch (Exception e) {
 			url = "/WEB-INF/error.jsp";

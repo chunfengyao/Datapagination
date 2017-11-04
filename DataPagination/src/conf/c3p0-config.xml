@@ -5,8 +5,8 @@
 		<property name="user">ycf</property>
 		<property name="password">ycf</property>
 		<property name="initialPoolSize">3</property>
-		<property name="maxPoolSize">6</property>
-		<property name="maxIdleTime">1000</property>
+		<property name="maxPoolSize">10</property>
+		<property name="maxIdleTime">10</property>
 	</default-config>
 
 	<named-config name="oracle_config">
@@ -15,7 +15,7 @@
 		<property name="user">ycf</property>
 		<property name="password">ycf</property>
 		<property name="initialPoolSize">3</property>
-		<property name="maxPoolSize">6</property>
-		<property name="maxIdleTime">1000</property>
+		<property name="maxPoolSize">10</property>
+		<property name="maxIdleTime">10</property>
 	</named-config>
 </c3p0-config>

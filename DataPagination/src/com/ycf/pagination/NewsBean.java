@@ -1,5 +1,7 @@
 package com.ycf.pagination;
 
+import java.util.Date;
+
 /**
  * 新闻信息对象的封装
  * @author 14325
@@ -12,7 +14,7 @@ public class NewsBean {
 	//新闻描述
 	public String newsDescription;
 	//新闻生成时间
-	public java.util.Date newsDate;
+	public Date newsDate;
 	//指向新闻的链接
 	public String newsURL;
 	
@@ -28,7 +30,7 @@ public class NewsBean {
 	public void setNewsDescription(String newsDescription) {
 		this.newsDescription = newsDescription;
 	}
-	public java.util.Date getNewsDate() {
+	public Date getNewsDate() {
 		return newsDate;
 	}
 	public void setNewsDate(java.util.Date newsDate) {
@@ -40,7 +42,4 @@ public class NewsBean {
 	public void setNewsURL(String newsURL) {
 		this.newsURL = newsURL;
 	}
-	
-	
-	
 }

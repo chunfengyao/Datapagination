@@ -30,7 +30,7 @@ public class NewsDao implements INewsDao {
 			//创建BeanListHandler
 			//设置sql字符串参数
 			td.setResaultSet(qr.query(sql,new BeanListHandler<NewsBean>(NewsBean.class),
-										Integer.parseInt(td.getCurrentPage()),
+										((Integer.parseInt(td.getCurrentPage())-1)*Integer.parseInt(td.getLineNumPerPage())),
 										Integer.parseInt(td.getLineNumPerPage())
 									)
 							);
@@ -40,7 +40,7 @@ public class NewsDao implements INewsDao {
 		}
 	}
 	
-	//接口方法实现，获取列表总数目，并设置到PageBean中
+	//接口方法实现，获取列表总数目，并设置totlePage到PageBean中
 	@Override
 	public int getTotleNum(PageBean<NewsBean> td) {
 		QueryRunner qr = new QueryRunner(ds);
@@ -54,7 +54,11 @@ public class NewsDao implements INewsDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		td.setWholeNums(totleNum.toString());
+		if ((totleNum.intValue()%(Integer.parseInt(td.getLineNumPerPage().toString()))) == 0) {
+			td.setTotlePage(""+(totleNum.intValue()/(Integer.parseInt(td.getLineNumPerPage().toString()))));
+		}else {
+			td.setTotlePage(""+((totleNum.intValue()/(Integer.parseInt(td.getLineNumPerPage().toString())))+1));
+		}
 		return totleNum.intValue();
 	}
 
