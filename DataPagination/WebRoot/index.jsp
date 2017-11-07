@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     		请选择您希望进入的页面。。<br>
     <div>
-    <a href="${pageScope.basePath}news">新闻</a>
-    <a href="${pageScope.basePath}movies">电影</a>
+    <a href="${pageScope.contextPath}/DataPagination/page/news/newslist.jsp">新闻</a>
+    <a href="${pageScope.contextPath}/DataPagination/movies.jsp">电影</a>
     </div>
   </body>
 </html>

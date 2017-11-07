@@ -42,7 +42,7 @@ public class NewsDao implements INewsDao {
 	
 	//接口方法实现，获取列表总数目，并设置totlePage到PageBean中
 	@Override
-	public int getTotleNum(PageBean<NewsBean> td) {
+	public String getTotleNum(PageBean<NewsBean> td) {
 		QueryRunner qr = new QueryRunner(ds);
 		Long totleNum = (long) 0;
 		//构造sql字符串
@@ -54,12 +54,7 @@ public class NewsDao implements INewsDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if ((totleNum.intValue()%(Integer.parseInt(td.getLineNumPerPage().toString()))) == 0) {
-			td.setTotlePage(""+(totleNum.intValue()/(Integer.parseInt(td.getLineNumPerPage().toString()))));
-		}else {
-			td.setTotlePage(""+((totleNum.intValue()/(Integer.parseInt(td.getLineNumPerPage().toString())))+1));
-		}
-		return totleNum.intValue();
+		return totleNum.toString();
 	}
 
 }

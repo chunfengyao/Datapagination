@@ -13,5 +13,5 @@ public interface INewsDao {
 	//获取一页数据
 	public void getOnePage(PageBean<NewsBean> td);
 	//获取总数
-	public int getTotleNum(PageBean<NewsBean> td);
+	public String getTotleNum(PageBean<NewsBean> td);
 }

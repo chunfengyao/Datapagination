@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+
   <head>
   <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.2.min.js"></script>
     <base href="<%=basePath%>">
@@ -56,28 +57,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:choose>
 		<tr>
 			<td align="center" colspan="4">
-				<a href="${request.contextPath }/DataPagination/news?currentpage=1&lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
+				<a href="${request.contextPath }/DataPagination/news?pageBean.currentpage=1&pageBean.lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
 						首页
 					</a>&nbsp;&nbsp;
-				<a href="${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.currentPage-1 }&lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
+				<a href="${request.contextPath }/DataPagination/news?pageBean.currentpage=${requestScope.Pagebean.currentPage-1 }&pageBean.lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
 						上一页
 					</a>&nbsp;&nbsp;
-				<a href="${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.currentPage+1 }&lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
+				<a href="news!newsquery?currentpage=${requestScope.Pagebean.currentPage+1 }&lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
 						下一页
 					</a>&nbsp;&nbsp;
-				<a href="${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.totlePage }&lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
+				<a href="${request.contextPath }/DataPagination/news?pageBean.currentpage=${requestScope.Pagebean.totlePage }&pageBean.lineNumPerPage=${requestScope.Pagebean.lineNumPerPage }">
 						末页${requestScope.Pagebean.totlePage }
 					</a>&nbsp;&nbsp;
 			</td>
 		</tr>
 	</table >
-	<table action="newslist.jsp" method="post">
-	<tr>
-		<td>调整每页行数:</td><td><input type="text" value="${requestScope.Pagebean.lineNumPerPage }" name="lineNumPerPage" id="lineNumPerPage">
-		<input type="submit" value="确定并刷新" id="button" onclick="location.href='${request.contextPath }/DataPagination/news?currentpage=${requestScope.Pagebean.currentPage }&lineNumPerPage='+document.getElementById('lineNumPerPage').value;return false;" >
-		<br></td>
-		</tr>
-	</table>
+	<form action="${pageContext.request.contextPath }/page/news/newslist.jsp" method="post">
+		调整每页行数:<input type="text" value="${requestScope.Pagebean.lineNumPerPage }" name="lineNumPerPage">
+		<input type="submit" value="确定并刷新" >
+		<br>
+		<a ></a>
+	</form>
 	<a href="${request.contextPath }/DataPagination">返回主页</a>
 	</body>
 </html>

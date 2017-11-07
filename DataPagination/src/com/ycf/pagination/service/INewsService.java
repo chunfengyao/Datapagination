@@ -4,6 +4,5 @@ import com.ycf.pagination.NewsBean;
 import com.ycf.pagination.PageBean;
 
 public interface INewsService {
-	public void getOnePageNews(PageBean<NewsBean> td);
-	public void getTotleNum(PageBean<NewsBean> td);
+	public String newsquery();
 }
